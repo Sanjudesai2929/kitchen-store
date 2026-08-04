@@ -1,22 +1,104 @@
 import React from 'react'
+import ScrollReveal from './ScrollReveal'
 
 const NewsletterBox = () => {
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-    }
+  const onSubmitHandler = (event) => {
+    event.preventDefault()
+  }
 
   return (
-    <div className=' text-center'>
-      <p className='text-2xl font-medium text-gray-800'>Subscribe now & get 20% off</p>
-      <p className='text-gray-400 mt-3'>
-      Join our community and enjoy perks, updates, and more!
-      </p>
-      <form onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border pl-3'>
-        <input className='w-full sm:flex-1 outline-none' type="email" placeholder='Enter your email' required/>
-        <button type='submit' className='bg-black text-white text-xs px-10 py-4'>SUBSCRIBE</button>
-      </form>
-    </div>
+
+    <ScrollReveal>
+
+      <div className="
+        bg-[#262626]
+        text-white
+        px-6
+        sm:px-12
+        lg:px-20
+        py-16
+        text-center
+      ">
+
+        <p className="
+          text-[#d97706]
+          uppercase
+          tracking-[4px]
+          text-xs
+          font-semibold
+        ">
+          Kitchen Zar
+        </p>
+
+        <h2 className="
+          prata-regular
+          text-3xl
+          sm:text-4xl
+          mt-4
+        ">
+          Make Your Kitchen Better
+        </h2>
+
+        <p className="
+          text-gray-400
+          mt-4
+          text-sm
+          max-w-lg
+          mx-auto
+        ">
+          Subscribe to discover new kitchen products,
+          special offers and useful kitchen ideas.
+        </p>
+
+        <form
+          onSubmit={onSubmitHandler}
+          className="
+            max-w-xl
+            mx-auto
+            mt-8
+            flex
+            bg-white
+            p-1
+          "
+        >
+
+          <input
+            className="
+              flex-1
+              px-4
+              py-3
+              outline-none
+              text-black
+              text-sm
+            "
+            type="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <button
+            type="submit"
+            className="
+              bg-[#d97706]
+              text-white
+              px-6
+              sm:px-10
+              text-xs
+              font-semibold
+              tracking-wide
+              hover:bg-[#b45309]
+              transition
+            "
+          >
+            SUBSCRIBE
+          </button>
+
+        </form>
+
+      </div>
+
+    </ScrollReveal>
   )
 }
 
