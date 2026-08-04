@@ -79,8 +79,38 @@ const Orders = ({ token }) => {
                 <p className='mt-3'>Method : {order.paymentMethod}</p>
                 <p>Payment : { order.payment ? 'Done' : 'Pending' }</p>
                 <p>Date : {new Date(order.date).toLocaleDateString()}</p>
+                  {order.items.map((item, index) => {
+
+  const parts = (item.size || "").split("_").filter(Boolean);
+
+  const productSize = parts.length === 3 ? parts[0] : "";
+  const packOf = parts.length === 3 ? parts[1] : parts[0];
+  const capacity = parts.length === 3 ? parts[2] : parts[1];
+
+  return (
+    <div key={index} className="py-1">
+    
+
+      {packOf && (
+        <p className="text-gray-500 text-xs">
+          <strong>Pack Of:</strong> {packOf}
+        </p>
+      )}
+
+      {capacity && (
+        <p className="text-gray-500 text-xs">
+          <strong>Capacity:</strong> {capacity} ml
+        </p>
+      )}
+
+      {index !== order.items.length - 1 && <hr className="my-2" />}
+    </div>
+  );
+})}
               </div>
+            
               <p className='text-sm sm:text-[15px]'>{currency}{order.amount}</p>
+              
               <select onChange={(event)=>statusHandler(event,order._id)} value={order.status} className='p-2 font-semibold'>
                 <option value="Order Placed">Order Placed</option>
                 <option value="Packing">Packing</option>

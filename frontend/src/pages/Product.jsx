@@ -11,6 +11,8 @@ const Product = () => {
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('')
   const [size,setSize] = useState('')
+  const [selectedPack, setSelectedPack] = useState("");
+const [selectedCapacity, setSelectedCapacity] = useState("");
 
   const fetchProductData = async () => {
 
@@ -18,6 +20,13 @@ const Product = () => {
       if (item._id === productId) {
         setProductData(item)
         setImage(item.image[0])
+        if (item.packOf?.length) {
+  setSelectedPack(item.packOf[0]);
+}
+
+if (item.capacity?.length) {
+  setSelectedCapacity(item.capacity[0]);
+}
         return null;
       }
     })
@@ -60,6 +69,51 @@ const Product = () => {
           </div>
           <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p>
           <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
+          {productData.packOf?.length > 0 && (
+  <div className="mt-6">
+    <p className="font-medium mb-3">Selected Pack of</p>
+
+    <div className="flex flex-wrap gap-3">
+      {productData.packOf.map((item, index) => (
+        <button
+          key={index}
+          onClick={() => setSelectedPack(item)}
+          className={`px-5 py-2 border rounded-md transition
+          ${
+            selectedPack === item
+              ? "bg-black text-white border-black"
+              : "bg-white hover:bg-gray-100"
+          }`}
+        >
+          {item}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
+
+{productData.capacity?.length > 0 && (
+  <div className="mt-6">
+    <p className="font-medium mb-3">Selected Capacity</p>
+
+    <div className="flex flex-wrap gap-3">
+      {productData.capacity.map((item, index) => (
+        <button
+          key={index}
+          onClick={() => setSelectedCapacity(item)}
+          className={`px-5 py-2 mb-2 border rounded-md transition
+          ${
+            selectedCapacity === item
+              ? "bg-black text-white border-black"
+              : "bg-white hover:bg-gray-100"
+          }`}
+        >
+          {item} ml
+        </button>
+      ))}
+    </div>
+  </div>
+)}
           {/* <div className='flex flex-col gap-4 my-8'>
               <p>Select Size</p>
               <div className='flex gap-2'>
@@ -68,7 +122,12 @@ const Product = () => {
                 ))}
               </div>
           </div> */}
-          <button onClick={()=>addToCart(productData._id,size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+          <button onClick={()=> addToCart(
+      productData._id,
+      size,
+      selectedPack,
+      selectedCapacity
+    )} className='bg-black text-white px-8  py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
           <hr className='mt-8 sm:w-4/5' />
           <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
               <p>100% Original product.</p>

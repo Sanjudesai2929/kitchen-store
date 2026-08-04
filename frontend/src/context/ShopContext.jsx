@@ -23,33 +23,36 @@ const [cartItems, setCartItems] = useState(() => {
 useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }, [cartItems]);
-    const addToCart = async (itemId, size) => {
+    const addToCart = async (itemId, size,packOf,
+  capacity
+) => {
 
         // if (!size) {
         //     toast.error('Select Product Size');
         //     return;
         // }
 
-        let cartData = structuredClone(cartItems);
+    const variantKey = `${size}_${packOf}_${capacity}`;
 
-        if (cartData[itemId]) {
-            if (cartData[itemId][size]) {
-                cartData[itemId][size] += 1;
-            }
-            else {
-                cartData[itemId][size] = 1;
-            }
-        }
-        else {
-            cartData[itemId] = {};
-            cartData[itemId][size] = 1;
-        }
-        setCartItems(cartData);
+    let cartData = structuredClone(cartItems);
+
+    if (!cartData[itemId]) {
+        cartData[itemId] = {};
+    }
+
+    if (cartData[itemId][variantKey]) {
+        cartData[itemId][variantKey] += 1;
+    } else {
+        cartData[itemId][variantKey] = 1;
+    }
+
+    setCartItems(cartData);
 
         // if (token) {
             try {
 
-                await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
+                await axios.post(backendUrl + '/api/cart/add', { itemId, size , packOf,
+                capacity}, { headers: { token } })
                 toast.success('Item added to cart')
 
             } catch (error) {

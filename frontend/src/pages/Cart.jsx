@@ -41,7 +41,7 @@ const Cart = () => {
           cartData.map((item, index) => {
 
             const productData = products.find((product) => product._id === item._id);
-
+console.log(products,item)
             return (
               <div key={index} className='py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4'>
                 <div className=' flex items-start gap-6'>
@@ -50,7 +50,29 @@ const Cart = () => {
                     <p className='text-xs sm:text-lg font-medium'>{productData.name}</p>
                     <div className='flex items-center gap-5 mt-2'>
                       <p>{currency}{productData.price}</p>
-                      <p className='px-2 sm:px-3 sm:py-1 border bg-slate-50'>{item.size}</p>
+                      {(() => {
+  const parts = (item.size || "").split("_").filter(Boolean);
+
+  const packOf = parts.length === 3 ? parts[1] : parts[0];
+  const capacity = parts.length === 3 ? parts[2] : parts[1];
+
+  return (
+    <div className="flex flex-wrap gap-2 mt-2">
+      
+      {packOf && (
+        <span className="px-2 sm:px-3 sm:py-1 border bg-slate-50 rounded">
+          Pack Of: {packOf}
+        </span>
+      )}
+
+      {capacity && (
+        <span className="px-2 sm:px-3 sm:py-1 border bg-slate-50 rounded">
+          Capacity: {capacity} ml
+        </span>
+      )}
+    </div>
+  );
+})()}
                     </div>
                   </div>
                 </div>

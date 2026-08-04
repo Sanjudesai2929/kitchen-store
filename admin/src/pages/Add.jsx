@@ -18,7 +18,42 @@ const Add = ({token}) => {
    const [subCategory, setSubCategory] = useState("Topwear");
    const [bestseller, setBestseller] = useState(false);
    const [sizes, setSizes] = useState([]);
+const [packOf, setPackOf] = useState([]);
+const [capacity, setCapacity] = useState([]);
 
+const [packInput, setPackInput] = useState("");
+const [capacityInput, setCapacityInput] = useState("");
+const handlePackKeyDown = (e) => {
+  if (e.key === "Enter" && packInput.trim() !== "") {
+    e.preventDefault();
+
+    if (!packOf.includes(packInput.trim())) {
+      setPackOf([...packOf, packInput.trim()]);
+    }
+
+    setPackInput("");
+  }
+};
+
+const handleCapacityKeyDown = (e) => {
+  if (e.key === "Enter" && capacityInput.trim() !== "") {
+    e.preventDefault();
+
+    if (!capacity.includes(capacityInput.trim())) {
+      setCapacity([...capacity, capacityInput.trim()]);
+    }
+
+    setCapacityInput("");
+  }
+};
+
+const removePack = (item) => {
+  setPackOf(packOf.filter(i => i !== item));
+};
+
+const removeCapacity = (item) => {
+  setCapacity(capacity.filter(i => i !== item));
+};
    const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -33,7 +68,8 @@ const Add = ({token}) => {
       formData.append("subCategory",subCategory)
       formData.append("bestseller",bestseller)
       formData.append("sizes",JSON.stringify(sizes))
-
+formData.append("packOf", JSON.stringify(packOf));
+formData.append("capacity", JSON.stringify(capacity));
       image1 && formData.append("image1",image1)
       image2 && formData.append("image2",image2)
       image3 && formData.append("image3",image3)
@@ -50,6 +86,11 @@ const Add = ({token}) => {
         setImage3(false)
         setImage4(false)
         setPrice('')
+        setPackOf([]);
+setCapacity([]);
+
+setPackInput("");
+setCapacityInput("");
       } else {
         toast.error(response.data.message)
       }
@@ -112,14 +153,74 @@ const Add = ({token}) => {
                   <option value="Bottomwear">Bottomwear</option>
                   <option value="Winterwear">Winterwear</option>
               </select>
-            </div>
+            </div> */}
 
             <div>
               <p className='mb-2'>Product Price</p>
               <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
-            </div> */}
+            </div>
 
         </div>
+        <div className="w-full">
+  <p className="mb-2">Selected Pack of</p>
+
+  <input
+    type="text"
+    placeholder="Type value and press Enter"
+    value={packInput}
+    onChange={(e)=>setPackInput(e.target.value)}
+    onKeyDown={handlePackKeyDown}
+    className="border px-3 py-2 w-full max-w-[500px]"
+  />
+
+  <div className="flex flex-wrap gap-2 mt-2">
+    {packOf.map((item,index)=>(
+      <div
+        key={index}
+        className="bg-gray-200 px-3 py-1 rounded-full flex items-center gap-2"
+      >
+        {item}
+        <button
+          type="button"
+          onClick={()=>removePack(item)}
+          className="text-red-600"
+        >
+          ×
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
+<div className="w-full mt-4">
+  <p className="mb-2">Selected Capacity</p>
+
+  <input
+    type="text"
+    placeholder="Type value and press Enter"
+    value={capacityInput}
+    onChange={(e)=>setCapacityInput(e.target.value)}
+    onKeyDown={handleCapacityKeyDown}
+    className="border px-3 py-2 w-full max-w-[500px]"
+  />
+
+  <div className="flex flex-wrap gap-2 mt-2">
+    {capacity.map((item,index)=>(
+      <div
+        key={index}
+        className="bg-gray-200 px-3 py-1 rounded-full flex items-center gap-2"
+      >
+        {item}
+        <button
+          type="button"
+          onClick={()=>removeCapacity(item)}
+          className="text-red-600"
+        >
+          ×
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
 {/* 
         <div>
           <p className='mb-2'>Product Sizes</p>
