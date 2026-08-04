@@ -39,7 +39,7 @@ storage jars, lunch boxes, spice jars, and pantry organizers.
 
         <div>
             <hr />
-            <p className='py-5 text-sm text-center'>Copyright 2024@ dreamscothing.com - All Right Reserved.</p>
+            <p className='py-5 text-sm text-center'>Copyright 2026@ dhabrji.store - All Right Reserved.</p>
         </div>
 
     </div>

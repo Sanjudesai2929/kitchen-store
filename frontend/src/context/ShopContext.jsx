@@ -12,18 +12,23 @@ const ShopContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
-    const [cartItems, setCartItems] = useState({});
+const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("cartItems");
+    return savedCart ? JSON.parse(savedCart) : {};
+});
     const [products, setProducts] = useState([]);
     const [token, setToken] = useState('')
     const navigate = useNavigate();
 
-
+useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}, [cartItems]);
     const addToCart = async (itemId, size) => {
 
-        if (!size) {
-            toast.error('Select Product Size');
-            return;
-        }
+        // if (!size) {
+        //     toast.error('Select Product Size');
+        //     return;
+        // }
 
         let cartData = structuredClone(cartItems);
 
@@ -41,16 +46,17 @@ const ShopContextProvider = (props) => {
         }
         setCartItems(cartData);
 
-        if (token) {
+        // if (token) {
             try {
 
                 await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
+                toast.success('Item added to cart')
 
             } catch (error) {
                 console.log(error)
                 toast.error(error.message)
             }
-        }
+        // }
 
     }
 
