@@ -45,30 +45,38 @@ if (item.capacity?.length) {
        <div className="flex-1 flex flex-col-reverse sm:flex-row gap-4">
 
   {/* Left Thumbnail Images */}
-  <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto sm:h-[600px] sm:w-[110px] flex-shrink-0">
+  <div className="relative sm:w-[110px] flex-shrink-0">
+
+  {/* Top Shadow */}
+  <div className="hidden sm:block absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none">
+    <div className="flex justify-center pt-1 text-gray-500">
+      ▲
+    </div>
+  </div>
+
+  {/* Thumbnail List */}
+  <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto sm:h-[600px] pr-1">
     {productData.image.map((item, index) => (
       <img
         key={index}
         src={item}
         onClick={() => setImage(item)}
         alt=""
-        className={`w-[22%] sm:w-full h-[140px] object-cover cursor-pointer rounded border-2 flex-shrink-0
+        className={`w-[22%] sm:w-full h-[140px] object-cover rounded-md border-2 cursor-pointer flex-shrink-0 transition
           ${
             image === item
               ? "border-black"
-              : "border-gray-300"
+              : "border-gray-300 hover:border-gray-500"
           }`}
       />
     ))}
   </div>
 
-  {/* Right Main Image */}
-  <div className="flex-1 h-[600px] border rounded-md overflow-hidden">
-    <img
-      src={image}
-      alt=""
-      className="w-full h-full object-contain"
-    />
+  {/* Bottom Shadow */}
+  <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none">
+    <div className="flex justify-center pb-1 text-gray-500">
+      ▼
+    </div>
   </div>
 
 </div>
