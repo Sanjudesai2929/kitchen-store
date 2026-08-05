@@ -81,6 +81,17 @@ if (item.capacity?.length) {
 
 </div>
 
+  {/* Right Main Image */}
+  <div className="flex-1 h-[600px] border rounded-md overflow-hidden">
+    <img
+      src={image}
+      alt=""
+      className="w-full h-full object-contain"
+    />
+  </div>
+
+</div>
+
         {/* -------- Product Info ---------- */}
         <div className='flex-1'>
           <h1 className='font-medium text-2xl mt-2'>{productData.name}</h1>
