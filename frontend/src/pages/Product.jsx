@@ -42,30 +42,32 @@ if (item.capacity?.length) {
       {/*----------- Product Data-------------- */}
       <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
 
-        {/*---------- Product Images------------- */}
-       <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
+       <div className="flex-1 flex flex-col-reverse sm:flex-row gap-4">
 
-  {/* Thumbnail Images */}
-  <div className="flex sm:flex-col gap-2 overflow-x-auto sm:overflow-y-auto sm:h-[320px] sm:w-[90px]">
-  {productData.image.map((item, index) => (
-    <img
-      key={index}
-      src={item}
-      onClick={() => setImage(item)}
-      className={`w-[24%] sm:w-full h-[72px] object-cover rounded border cursor-pointer flex-shrink-0 ${
-        image === item ? "border-black" : "border-gray-300"
-      }`}
-      alt=""
-    />
-  ))}
-</div>
+  {/* Left Thumbnail Images */}
+  <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto sm:h-[600px] sm:w-[110px] flex-shrink-0">
+    {productData.image.map((item, index) => (
+      <img
+        key={index}
+        src={item}
+        onClick={() => setImage(item)}
+        alt=""
+        className={`w-[22%] sm:w-full h-[140px] object-cover cursor-pointer rounded border-2 flex-shrink-0
+          ${
+            image === item
+              ? "border-black"
+              : "border-gray-300"
+          }`}
+      />
+    ))}
+  </div>
 
-  {/* Main Image */}
-  <div className="w-full sm:flex-1">
+  {/* Right Main Image */}
+  <div className="flex-1 h-[600px] border rounded-md overflow-hidden">
     <img
       src={image}
       alt=""
-      className="w-full h-[500px] object-contain border rounded-md"
+      className="w-full h-full object-contain"
     />
   </div>
 
