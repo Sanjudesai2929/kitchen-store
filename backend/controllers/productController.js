@@ -72,7 +72,7 @@ id = new mongoose.Types.ObjectId(id)
         if (!product) {
             return res.json({
                 success: false,
-                message: "Product not found"
+                message: product
             });
         }
 
