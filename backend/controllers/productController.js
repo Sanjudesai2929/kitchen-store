@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from "cloudinary"
 import productModel from "../models/productModel.js"
-import mongoose from "mongoose"
 
 // function for add product
 const addProduct = async (req, res) => {
@@ -54,7 +53,7 @@ const addProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
 
-        let {
+        const {
             id,
             name,
             description,
@@ -66,13 +65,14 @@ const updateProduct = async (req, res) => {
             packOf,
             capacity
         } = req.body;
-// id = new mongoose.Types.ObjectId(id)
+
         const product = await productModel.findById(id);
 
         if (!product) {
             return res.json({
                 success: false,
-                message: id
+                id:id,
+                message: "Product not found"
             });
         }
 
