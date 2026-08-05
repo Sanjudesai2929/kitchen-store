@@ -353,7 +353,7 @@ setCapacityInput("");
           <label className='cursor-pointer' htmlFor="bestseller">Add to bestseller</label>
         </div>
 
-        <button type="submit" className='w-28 py-3 mt-4 bg-black text-white'>ADD</button>
+        <button type="submit" className='w-28 py-3 mt-4 bg-black text-white'>Update</button>
 
     </form>
   )
