@@ -146,10 +146,12 @@ const removeProduct = async (req, res) => {
 // function for single product info
 const singleProduct = async (req, res) => {
     try {
-        
-        const { productId } = req.body
-        const product = await productModel.findById(productId)
-        res.json({success:true,product})
+        const product = await productModel.findById(req.params.id);
+
+        res.json({
+            success:true,
+            product
+        });
 
     } catch (error) {
         console.log(error)
