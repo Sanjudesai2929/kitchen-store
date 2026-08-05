@@ -7,9 +7,9 @@ const List = ({ token }) => {
 
   const [list, setList] = useState([])
 
+  const navigate = useNavigate();
   const fetchList = async () => {
     try {
-const navigate = useNavigate();
       const response = await axios.get(backendUrl + '/api/product/list')
       if (response.data.success) {
         setList(response.data.products.reverse());
