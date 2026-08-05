@@ -5,9 +5,9 @@ import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 const List = ({ token }) => {
 
+  const navigate = useNavigate();
   const [list, setList] = useState([])
 
-  const navigate = useNavigate();
   const fetchList = async () => {
     try {
       const response = await axios.get(backendUrl + '/api/product/list')
