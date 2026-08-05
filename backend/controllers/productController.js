@@ -66,7 +66,7 @@ const updateProduct = async (req, res) => {
             packOf,
             capacity
         } = req.body;
-id = new mongoose.Types.ObjectId(id)
+// id = new mongoose.Types.ObjectId(id)
         const product = await productModel.findById({ _id: id });
 
         if (!product) {
