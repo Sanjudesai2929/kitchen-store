@@ -46,22 +46,19 @@ if (item.capacity?.length) {
        <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
 
   {/* Thumbnail Images */}
-  <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-auto sm:h-[500px] sm:w-[90px] gap-2">
-    {productData.image.map((item, index) => (
-      <img
-        key={index}
-        onClick={() => setImage(item)}
-        src={item}
-        alt=""
-        className={`w-[24%] sm:w-full h-20 object-cover cursor-pointer border rounded-md flex-shrink-0
-          ${
-            image === item
-              ? "border-black"
-              : "border-gray-300"
-          }`}
-      />
-    ))}
-  </div>
+  <div className="flex sm:flex-col gap-2 overflow-x-auto sm:overflow-y-auto sm:h-[320px] sm:w-[90px]">
+  {productData.image.map((item, index) => (
+    <img
+      key={index}
+      src={item}
+      onClick={() => setImage(item)}
+      className={`w-[24%] sm:w-full h-[72px] object-cover rounded border cursor-pointer flex-shrink-0 ${
+        image === item ? "border-black" : "border-gray-300"
+      }`}
+      alt=""
+    />
+  ))}
+</div>
 
   {/* Main Image */}
   <div className="w-full sm:flex-1">
