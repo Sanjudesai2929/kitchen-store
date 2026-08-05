@@ -50,7 +50,73 @@ const addProduct = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
+const updateProduct = async (req, res) => {
+    try {
 
+        const {
+            id,
+            name,
+            description,
+            price,
+            category,
+            subCategory,
+            sizes,
+            bestseller,
+            packOf,
+            capacity
+        } = req.body;
+
+        const product = await productModel.findById(id);
+
+        if (!product) {
+            return res.json({
+                success: false,
+                message: "Product not found"
+            });
+        }
+
+        let imagesUrl = [...product.image];
+
+        for (let i = 1; i <= 7; i++) {
+
+            const image = req.files[`image${i}`] && req.files[`image${i}`][0];
+
+            if (image) {
+
+                const result = await cloudinary.uploader.upload(image.path, {
+                    resource_type: "image"
+                });
+
+                imagesUrl[i - 1] = result.secure_url;
+            }
+        }
+
+        await productModel.findByIdAndUpdate(id, {
+            name,
+            description,
+            category,
+            subCategory,
+            price: Number(price),
+            bestseller: bestseller === "true",
+            sizes: JSON.parse(sizes),
+            packOf: JSON.parse(packOf),
+            capacity: JSON.parse(capacity),
+            image: imagesUrl
+        });
+
+        res.json({
+            success: true,
+            message: "Product Updated Successfully"
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success: false,
+            message: error.message
+        });
+    }
+};
 // function for list product
 const listProducts = async (req, res) => {
     try {

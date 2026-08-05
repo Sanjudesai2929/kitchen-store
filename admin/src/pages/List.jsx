@@ -58,6 +58,7 @@ const List = ({ token }) => {
           <b>Name</b>
           <b>Category</b>
           <b>Price</b>
+            <b>Edit</b>
           <b className='text-center'>Action</b>
         </div>
 
@@ -70,7 +71,13 @@ const List = ({ token }) => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
-              <p onClick={()=>removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
+
+    <button
+        onClick={() => navigate(`/edit/${item._id}`)}
+        className="bg-blue-600 text-white px-3 py-1 rounded"
+    >
+        Edit
+    </button>              <p onClick={()=>removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
             </div>
           ))
         }
