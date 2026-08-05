@@ -65,7 +65,7 @@ const updateProduct = async (req, res) => {
             packOf,
             capacity
         } = req.body;
-console.log(req.body.id);
+console.log(req.body);
         const product = await productModel.findById(id);
 
         if (!product) {
