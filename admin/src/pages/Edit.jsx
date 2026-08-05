@@ -109,6 +109,8 @@ const removeCapacity = (item) => {
       formData.append("sizes",JSON.stringify(sizes))
 formData.append("packOf", JSON.stringify(packOf));
 formData.append("capacity", JSON.stringify(capacity));
+formData.append("id",id);
+
       image1 && formData.append("image1",image1)
       image2 && formData.append("image2",image2)
       image3 && formData.append("image3",image3)
@@ -117,7 +119,7 @@ formData.append("capacity", JSON.stringify(capacity));
       image6 && formData.append("image6",image6)
       image7 && formData.append("image7",image7)
 
-      const response = await axios.post(backendUrl + "/api/product/add",formData,{headers:{token}})
+      const response = await axios.post(backendUrl + "/api/product/update",formData,{headers:{token}})
 
       if (response.data.success) {
         toast.success(response.data.message)
