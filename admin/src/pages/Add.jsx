@@ -10,6 +10,9 @@ const Add = ({token}) => {
   const [image2,setImage2] = useState(false)
   const [image3,setImage3] = useState(false)
   const [image4,setImage4] = useState(false)
+  const [image5,setImage5] = useState(false)
+  const [image6,setImage6] = useState(false)
+  const [image7,setImage7] = useState(false)
 
    const [name, setName] = useState("");
    const [description, setDescription] = useState("");
@@ -74,6 +77,9 @@ formData.append("capacity", JSON.stringify(capacity));
       image2 && formData.append("image2",image2)
       image3 && formData.append("image3",image3)
       image4 && formData.append("image4",image4)
+      image5 && formData.append("image5",image5)
+      image6 && formData.append("image6",image6)
+      image7 && formData.append("image7",image7)
 
       const response = await axios.post(backendUrl + "/api/product/add",formData,{headers:{token}})
 
@@ -85,6 +91,9 @@ formData.append("capacity", JSON.stringify(capacity));
         setImage2(false)
         setImage3(false)
         setImage4(false)
+        setImage5(false)
+        setImage6(false)
+        setImage7(false)
         setPrice('')
         setPackOf([]);
 setCapacity([]);
@@ -122,6 +131,18 @@ setCapacityInput("");
             <label htmlFor="image4">
               <img className='w-20' src={!image4 ? assets.upload_area : URL.createObjectURL(image4)} alt="" />
               <input onChange={(e)=>setImage4(e.target.files[0])} type="file" id="image4" hidden/>
+            </label>
+             <label htmlFor="image5">
+              <img className='w-20' src={!image5 ? assets.upload_area : URL.createObjectURL(image5)} alt="" />
+              <input onChange={(e)=>setImage5(e.target.files[0])} type="file" id="image5" hidden/>
+            </label>
+             <label htmlFor="image6">
+              <img className='w-20' src={!image6 ? assets.upload_area : URL.createObjectURL(image6)} alt="" />
+              <input onChange={(e)=>setImage6(e.target.files[0])} type="file" id="image6" hidden/>
+            </label>
+             <label htmlFor="image7">
+              <img className='w-20' src={!image7 ? assets.upload_area : URL.createObjectURL(image7)} alt="" />
+              <input onChange={(e)=>setImage7(e.target.files[0])} type="file" id="image7" hidden/>
             </label>
           </div>
         </div>
