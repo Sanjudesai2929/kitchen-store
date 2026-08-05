@@ -141,7 +141,7 @@ setCapacityInput("");
             <div>
               <p className='mb-2'>Product category</p>
               <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
-                  <option value="Zar">Zar</option>
+                  <option value="Kitchen Containers">Kitchen Containers</option>
                  
               </select>
             </div>

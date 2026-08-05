@@ -15,14 +15,14 @@ const About = () => {
           <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="" />
           <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
           <h1 className='text-2xl font-bold'>Making Every Kitchen Better</h1>
-              <p>At Kitchen Zar, we believe the kitchen is more than just a place to cook — it's where everyday moments, creativity, and memories come together.</p>
+              <p>At Kitchen Containers, we believe the kitchen is more than just a place to cook — it's where everyday moments, creativity, and memories come together.</p>
               <p>We bring you a carefully selected range of quality kitchen products and useful everyday essentials designed to make cooking, organizing, and managing your kitchen easier and more enjoyable.</p>
               <b className='text-gray-800'>Our Mission</b>
-              <p>Our mission at Kitchen Zar is simple: make everyday kitchen life easier.</p>
+              <p>Our mission at Kitchen Containers is simple: make everyday kitchen life easier.</p>
 
 <p>We are committed to providing useful, reliable, and thoughtfully selected products along with a smooth and convenient shopping experience.</p>
 
-<p>Whether you're setting up a new kitchen or upgrading your everyday essentials, Kitchen Zar is here to help you find products you'll love and use every day.</p>
+<p>Whether you're setting up a new kitchen or upgrading your everyday essentials, Kitchen Containers is here to help you find products you'll love and use every day.</p>
           </div>
       </div>
 

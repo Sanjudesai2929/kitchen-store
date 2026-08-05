@@ -105,7 +105,7 @@ const Hero = () => {
           {/* Product Image */}
           <img
             src={assets.hero_img}
-            alt="Kitchen Zar Kitchen Products"
+            alt="Kitchen Containers Kitchen Products"
             className="
               relative
               z-10
@@ -129,7 +129,7 @@ const Hero = () => {
             shadow-lg
           ">
             <p className="text-xs uppercase tracking-widest text-gray-500">
-              Kitchen Zar
+               Kitchen Containers
             </p>
 
             <p className="text-lg font-semibold text-[#262626] mt-1">

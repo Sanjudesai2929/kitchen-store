@@ -28,7 +28,7 @@ const NewsletterBox = () => {
           text-xs
           font-semibold
         ">
-          Kitchen Zar
+          Kitchen Containers
         </p>
 
         <h2 className="

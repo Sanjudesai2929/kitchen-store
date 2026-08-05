@@ -125,7 +125,7 @@ const Login = () => {
 
           <img
             src={assets.hero_img}
-            alt="Kitchen Zar"
+            alt="Kitchen Containers"
             className="
               relative
               z-10
@@ -158,7 +158,7 @@ const Login = () => {
               uppercase
               font-semibold
             ">
-              Kitchen Zar
+              Kitchen Containers
             </p>
 
             <h2 className="
@@ -233,7 +233,7 @@ const Login = () => {
                 text-[#262626]
                 mt-4
               ">
-                Kitchen Zar
+                Kitchen Containers
               </h1>
 
               <p className="
@@ -271,7 +271,7 @@ const Login = () => {
               ">
                 {currentState === 'Login'
                   ? 'Welcome back'
-                  : 'Join Kitchen Zar'
+                  : 'Join Kitchen Containers'
                 }
               </span>
 

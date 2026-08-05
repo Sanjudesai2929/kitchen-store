@@ -58,7 +58,7 @@ const Home = () => {
                 font-semibold
                 mb-4
               ">
-                Kitchen Zar
+                Kitchen Containers
               </p>
 
               <h2 className="
